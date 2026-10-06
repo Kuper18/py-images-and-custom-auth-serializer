@@ -46,6 +46,7 @@ def generate_image_path(instance: "Movie", filename: str) -> str:
         f"{slugify(instance.title)}-{uuid.uuid4()}{extension}"
     )
 
+
 class Movie(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()

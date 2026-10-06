@@ -1,4 +1,7 @@
-from django.contrib.auth.models import AbstractUser, UserManager as DjangoUserManager
+from django.contrib.auth.models import (
+    AbstractUser,
+    UserManager as DjangoUserManager,
+)
 from django.db import models
 from django.utils.translation import gettext as _
 
@@ -23,10 +26,10 @@ class UserManager(DjangoUserManager):
         return user
 
     def create_user(
-            self,
-            email: str | None,
-            password: str | None=None,
-            **extra_fields,
+        self,
+        email: str | None,
+        password: str | None = None,
+        **extra_fields,
     ):
         """Create and save a regular User with the given email and password."""
         extra_fields.setdefault("is_staff", False)
@@ -34,10 +37,10 @@ class UserManager(DjangoUserManager):
         return self._create_user(email, password, **extra_fields)
 
     def create_superuser(
-            self,
-            email: str,
-            password: str | None = None,
-            **extra_fields,
+        self,
+        email: str,
+        password: str | None = None,
+        **extra_fields,
     ):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
